@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">STANDBY</string>
+    <string name="enable_fake_standby">Enable Fake StandBy</string>
 </resources>
