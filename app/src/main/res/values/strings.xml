@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">STANDBY</string>
     <string name="enable_fake_standby">Enable Fake StandBy</string>
+    <string name="accessibility_service_description">"STANDBY App requires this functionality to make it possible to control every screen and every app. This feature will only usedto provide the functionality of the app and will not access, save, collect or share any data."</string>
+    <string name="accessibility_error_not_enable_title">\"Some functionality is not enabled\"</string>
+    <string name="accessibility_error_not_enable_message">\"Standby is not enabled in you device\'s
+        accessibility settings. To run this app, that service has to be enabled. Simply open the
+        accessibility settings, scroll down to Standby and enable it. On some devices you may look
+        for the option under \\\"installed services\\\"\"</string>
+    <string name="accessibility_error_settings_label">Open Settings.</string>
+    <string name="accessibility_error_not_enabled_title">Some Functionality is not Enabled</string>
+    <string name="accessibility_error_not_enabled_message">Standby is not enabled in you device\'s
+        accessibility settings. To run this app, that service has to be enabled. Simply open the
+        accessibility settings, scroll down to Standby and enable it. On some devices you may look
+        for the option under \\\"installed services\\\"</string>
+    <string name="accessibility_error_not_running_title">Required Service Not Running</string>
+    <string name="accessibility_error_not_running_message">A required service for Standby is not
+        running. Please restart your device.</string>
+    <string name="accessibility_error_no_overlay_permission_title">Permission Required.</string>
+    <string name="accessibility_error_no_overlay_permission_message">This app is not permitted to
+        display overlays over other apps. To run this app, you need to grant the \\\"Display over
+        other apps\\\" permission for Standby. This permission makes it possible for this app to
+        display content over the content of other apps. To grant this permission, enable the
+        switch on the following screen.</string>
+
 </resources>
