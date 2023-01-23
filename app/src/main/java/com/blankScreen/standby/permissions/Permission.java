@@ -34,11 +34,11 @@ public class Permission {
         Log.i("PermissionUtils", "Checking if application hast permission to draw overlays...");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (Settings.canDrawOverlays(context)) {
-                Log.i("PermissionUtils", "Permission is given!");
+                Log.i("Permission", "Permission is given!");
                 return true;
             }
         }
-        Log.i("PermissionUtils", "Permission is not given!");
+        Log.i("Permission", "Permission is not given!");
         return false;
     }
 
@@ -87,19 +87,19 @@ public class Permission {
     }
 
     public static boolean checkAccessibilityServiceEnabled(Context context) {
-        Log.i("PermissionUtils", "Checking if accessibility service is enabled...");
+        Log.i("Permission", "Checking if accessibility service is enabled...");
         AccessibilityManager am = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
         List<AccessibilityServiceInfo> enabledServices = am.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK);
 
         for (AccessibilityServiceInfo enabledService : enabledServices) {
             ServiceInfo enabledServiceInfo = enabledService.getResolveInfo().serviceInfo;
-            Log.i("PermissionUtils", "Found " + enabledServiceInfo.processName);
+            Log.i("Permission", "Found " + enabledServiceInfo.processName);
             if (enabledServiceInfo.packageName.equals(context.getPackageName()) && enabledServiceInfo.name.equals(OverlayService.class.getName())) {
                 Log.i("PermissionUtils", "Accessibility service enabled!");
                 return true;
             }
         }
-        Log.e("PermissionUtils", "Accessibility service is not enabled!");
+        Log.e("Permission", "Accessibility service is not enabled!");
         return false;
     }
 
