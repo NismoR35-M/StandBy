@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ import com.blankScreen.standby.permissions.AccessibilityServiceNotEnabledDialog;
 import com.blankScreen.standby.permissions.AccessibilityServiceNotRunningDialog;
 import com.blankScreen.standby.permissions.OverlayPermissionRequiredDialog;
 import com.blankScreen.standby.permissions.Permission;
+import com.blankScreen.standby.services.OverlayService;
+import com.blankScreen.standby.utils.Constants;
 import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +36,21 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             startActivity(intent);
             Toast.makeText(this, "Installed Apps -> StandBy", Toast.LENGTH_SHORT).show();
+        });
+
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                if (key.equals("setting_show_notification")) {
+                    Intent intent = new Intent(getApplicationContext(), OverlayService.class);
+                    if (sharedPreferences.getBoolean("setting_show_notification", false)) {
+                        intent.putExtra(Constants.Intent.Extra.OverlayAction.KEY, Constants.Intent.Extra.OverlayAction.SHOW_NOTIFICATION);
+                    } else {
+                        intent.putExtra(Constants.Intent.Extra.OverlayAction.KEY, Constants.Intent.Extra.OverlayAction.HIDE_NOTIFICATION);
+                    }
+                    startService(intent);
+                }
+            }
         });
 
     }
